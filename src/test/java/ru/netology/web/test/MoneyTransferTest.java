@@ -47,6 +47,7 @@ public class MoneyTransferTest {
         var amount = DataHelper.generateInvalidAmount(secondCardBalance);
         var transferMoney = dashboardPage.transferTo(cardNumberFirst);
         transferMoney.transferMoney(String.valueOf(amount), cardNumberSecond);
+        transferMoney.findErrorMessage("На вашем счёте недостаточно средств!");
         var actualFirstCardBalance = dashboardPage.getCardBalance(cardNumberFirst);
         var actualSecondCardBalance = dashboardPage.getCardBalance(cardNumberSecond);
         assertEquals(firstCardBalance, actualFirstCardBalance);
